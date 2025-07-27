@@ -257,21 +257,21 @@ const themeToggle = document.getElementById("themeToggle");
 // Check for saved theme preference or default to dark mode
 const currentTheme = localStorage.getItem("theme") || "dark";
 function setThemeSwitch(theme) {
-  if (theme === "dark") {
-    document.body.classList.add("dark-theme");
-    themeToggle.setAttribute("aria-checked", "true");
-    themeToggle.setAttribute("title", "Switch to light theme");
-  } else {
-    document.body.classList.remove("dark-theme");
+  if (theme === "light") {
+    document.body.classList.add("light-theme");
     themeToggle.setAttribute("aria-checked", "false");
     themeToggle.setAttribute("title", "Switch to dark theme");
+  } else {
+    document.body.classList.remove("light-theme");
+    themeToggle.setAttribute("aria-checked", "true");
+    themeToggle.setAttribute("title", "Switch to light theme");
   }
 }
 // Initialize theme switch based on current state
 setThemeSwitch(currentTheme);
 themeToggle.addEventListener("click", () => {
-  const isDark = document.body.classList.toggle("dark-theme");
-  const theme = isDark ? "dark" : "light";
+  const isLight = document.body.classList.toggle("light-theme");
+  const theme = isLight ? "light" : "dark";
   localStorage.setItem("theme", theme);
   setThemeSwitch(theme);
 });
