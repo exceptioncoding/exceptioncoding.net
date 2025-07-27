@@ -138,7 +138,7 @@ body {
 }
 
 /* Dark theme particles - lighter color for visibility */
-body.dark-theme .particle {
+.particle {
   background: rgba(
     255,
     255,
@@ -177,7 +177,7 @@ header {
 }
 
 /* Ensure header has dark background in light theme too */
-body:not(.dark-theme) header {
+body.light-theme header {
   background: rgb(
     0,
     32,
@@ -186,8 +186,8 @@ body:not(.dark-theme) header {
 }
 
 /* Ensure logo and nav links inherit proper background in light theme */
-body:not(.dark-theme) .logo,
-body:not(.dark-theme) .nav-links a {
+body.light-theme .logo,
+body.light-theme .nav-links a {
   background: rgb(
     0,
     32,
@@ -578,12 +578,12 @@ body.light-theme .VPSwitch .check {
 }
 
 /* Hero section always dark - override light theme */
-body:not(.dark-theme) .hero h1 {
+body.light-theme .hero h1 {
   color: #ffffff !important; /* Always white for dark hero section */
 }
 
 /* Hero section always dark - maintain dark theme */
-body.dark-theme .hero h1 {
+body:not(.light-theme) .hero h1 {
   color: #ffffff; /* Always white for dark hero section */
 }
 
@@ -745,12 +745,12 @@ body.dark-theme .hero h1 {
 }
 
 /* Light theme section titles */
-body:not(.dark-theme) .section-title {
+body.light-theme .section-title {
   color: #000000; /* Pure black for light theme */
 }
 
 /* Dark theme section titles */
-body.dark-theme .section-title {
+body:not(.light-theme) .section-title {
   color: #ffffff; /* Pure white for dark theme */
 }
 
@@ -769,7 +769,7 @@ body.dark-theme .section-title {
 }
 
 /* Theme-specific vibrant underlines */
-body:not(.dark-theme) .section-title::after {
+body.light-theme .section-title::after {
   background: linear-gradient(
     90deg,
     #0066cc 0%,
@@ -781,7 +781,7 @@ body:not(.dark-theme) .section-title::after {
   animation: gradientSlide 3s ease infinite;
 }
 
-body.dark-theme .section-title::after {
+body:not(.light-theme) .section-title::after {
   background: linear-gradient(
     90deg,
     #00ffff 0%,
@@ -890,23 +890,23 @@ body.dark-theme .section-title::after {
 }
 
 /* Dark theme overrides */
-body.dark-theme .syntax-keyword {
+body:not(.light-theme) .syntax-keyword {
   color: #4fc3f7 !important; /* Light blue for dark theme */
 }
 
-body.dark-theme .syntax-function {
+body:not(.light-theme) .syntax-function {
   color: #ba68c8 !important; /* Light purple for dark theme */
 }
 
-body.dark-theme .syntax-string {
+body:not(.light-theme) .syntax-string {
   color: #81c784 !important; /* Light green for dark theme */
 }
 
-body.dark-theme .syntax-number {
+body:not(.light-theme) .syntax-number {
   color: #4fc3f7 !important; /* Light blue for dark theme */
 }
 
-body.dark-theme .syntax-comment {
+body:not(.light-theme) .syntax-comment {
   color: #9e9e9e !important; /* Light gray for dark theme */
 }
 
@@ -1029,11 +1029,11 @@ body.dark-theme .syntax-comment {
 }
 
 /* ACCESSIBILITY FIX: Stat numbers proper contrast for both themes */
-body:not(.dark-theme) .stat-number {
+body.light-theme .stat-number {
   color: #000000; /* Pure black for light theme */
 }
 
-body.dark-theme .stat-number {
+body:not(.light-theme) .stat-number {
   color: #ffffff; /* Pure white for dark theme */
 }
 
@@ -1163,13 +1163,13 @@ body.dark-theme .stat-number {
 }
 
 /* ACCESSIBILITY FIX: Tech tags proper contrast for both themes */
-body:not(.dark-theme) .tech-tag {
+body.light-theme .tech-tag {
   background: rgba(0, 32, 58, 0.1); /* Light blue background for light theme */
   color: #000000; /* Black text for light theme */
   border-color: rgba(0, 32, 58, 0.3);
 }
 
-body.dark-theme .tech-tag {
+body:not(.light-theme) .tech-tag {
   background: rgba(255, 255, 255, 0.15); /* Light background for dark theme */
   color: #ffffff; /* White text for dark theme */
   border-color: rgba(255, 255, 255, 0.3);
@@ -1262,13 +1262,13 @@ body.dark-theme .tech-tag {
 }
 
 /* Dark theme project primary buttons - match hero button color */
-body.dark-theme .project-link.primary {
+body:not(.light-theme) .project-link.primary {
   background: #0066cc; /* Same bright blue as hero button */
   color: #ffffff;
   box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
 }
 
-body.dark-theme .project-link.primary:hover {
+body:not(.light-theme) .project-link.primary:hover {
   background: #0074d9; /* Brighter blue on hover */
   box-shadow: 0 15px 35px rgba(0, 116, 217, 0.4);
 }
@@ -1279,13 +1279,13 @@ body.dark-theme .project-link.primary:hover {
 }
 
 /* ACCESSIBILITY FIX: Project links proper contrast for both themes */
-body:not(.dark-theme) .project-link.secondary {
+body.light-theme .project-link.secondary {
   background: rgba(0, 32, 58, 0.1); /* Light background for light theme */
   color: #000000; /* Black text for light theme */
   border-color: rgba(0, 32, 58, 0.5);
 }
 
-body.dark-theme .project-link.secondary {
+body:not(.light-theme) .project-link.secondary {
   background: rgba(255, 255, 255, 0.1); /* Light background for dark theme */
   color: #ffffff; /* White text for dark theme */
   border-color: rgba(255, 255, 255, 0.3);
@@ -1341,13 +1341,13 @@ body.dark-theme .project-link.secondary {
 }
 
 /* ACCESSIBILITY FIX: Social links proper contrast for both themes */
-body:not(.dark-theme) .social-link {
+body.light-theme .social-link {
   background: rgba(0, 32, 58, 0.9); /* Dark blue background for light theme */
   color: #ffffff; /* White icons on dark background */
   border-color: rgba(0, 32, 58, 0.5);
 }
 
-body.dark-theme .social-link {
+body:not(.light-theme) .social-link {
   background: rgba(255, 255, 255, 0.9); /* Light background for dark theme */
   color: #000000; /* Dark icons on light background */
   border-color: rgba(255, 255, 255, 0.5);
@@ -1406,11 +1406,11 @@ footer {
 }
 
 /* ACCESSIBILITY FIX: Footer links proper contrast for both themes */
-body:not(.dark-theme) .footer-link {
+body.light-theme .footer-link {
   color: #003d6b; /* Dark blue for light theme - high contrast */
 }
 
-body.dark-theme .footer-link {
+body:not(.light-theme) .footer-link {
   color: #74b9ff; /* Light blue for dark theme - high contrast */
 }
 
@@ -1418,12 +1418,12 @@ body.dark-theme .footer-link {
   color: var(--accent-secondary);
 }
 
-body:not(.dark-theme) .footer-link:hover {
+body.light-theme .footer-link:hover {
   color: #0074d9; /* Brighter blue for hover in light theme */
   text-shadow: none; /* No shadow in light theme */
 }
 
-body.dark-theme .footer-link:hover {
+body:not(.light-theme) .footer-link:hover {
   color: #00f5ff; /* Bright cyan for hover in dark theme */
   text-shadow: 0 0 10px currentColor; /* Shadow only in dark theme */
 }
@@ -1485,8 +1485,8 @@ body.dark-theme .footer-link:hover {
 
 /* VIBRANT COLORFUL GRADIENTS + ACCESSIBILITY: Vivid backgrounds with high-contrast text */
 body .hero h1,
-body.dark-theme .hero h1,
-body:not(.dark-theme) .hero h1 {
+body:not(.light-theme) .hero h1,
+body.light-theme .hero h1 {
   position: relative;
   background: linear-gradient(
     135deg,
@@ -1505,7 +1505,7 @@ body:not(.dark-theme) .hero h1 {
 }
 
 /* Hero section always uses dark theme gradient */
-body:not(.dark-theme) .hero h1 {
+body.light-theme .hero h1 {
   background: linear-gradient(
     135deg,
     #ff7675 0%,
@@ -1522,7 +1522,7 @@ body:not(.dark-theme) .hero h1 {
   filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.8));
 }
 
-body.dark-theme .hero h1 {
+body:not(.light-theme) .hero h1 {
   background: linear-gradient(
     135deg,
     #ff7675 0%,
@@ -1565,8 +1565,8 @@ body.dark-theme .hero h1 {
 
 /* Section titles with vibrant gradients */
 body .section-title,
-body.dark-theme .section-title,
-body:not(.dark-theme) .section-title {
+body:not(.light-theme) .section-title,
+body.light-theme .section-title {
   position: relative;
   background: linear-gradient(135deg, #a29bfe 0%, #fd79a8 50%, #fdcb6e 100%);
   background-size: 200% 200%;
@@ -1577,7 +1577,7 @@ body:not(.dark-theme) .section-title {
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-body:not(.dark-theme) .section-title {
+body.light-theme .section-title {
   background: linear-gradient(
     135deg,
     #0066cc 0%,
@@ -1594,7 +1594,7 @@ body:not(.dark-theme) .section-title {
   filter: drop-shadow(1px 1px 2px rgba(255, 255, 255, 0.8));
 }
 
-body.dark-theme .section-title {
+body:not(.light-theme) .section-title {
   background: linear-gradient(
     135deg,
     #00ffff 0%,
