@@ -257,6 +257,9 @@ const themeToggle = document.getElementById("themeToggle");
 // Check for saved theme preference or default to dark mode
 const currentTheme = localStorage.getItem("theme") || "dark";
 function setThemeSwitch(theme) {
+  // Remove loading class since JavaScript is now handling the theme
+  document.documentElement.classList.remove("dark-theme-loading");
+  
   if (theme === "dark") {
     document.body.classList.add("dark-theme");
     themeToggle.setAttribute("aria-checked", "true");

@@ -31,7 +31,8 @@
 }
 
 /* Dark theme */
-body.dark-theme {
+body.dark-theme,
+html.dark-theme-loading body {
   --bg-primary: #000000; /* Pure black for maximum contrast */
   --bg-secondary: #0a0a0a; /* Very dark gray */
   --bg-card: rgba(0, 0, 0, 0.95); /* Nearly opaque black */
@@ -293,6 +294,12 @@ body:not(.dark-theme) .VPSwitch {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+/* Override light theme when dark-theme-loading is on html */
+html.dark-theme-loading body:not(.dark-theme) .VPSwitch {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+}
+
 .VPSwitch:focus-visible {
   box-shadow: 0 0 0 3px var(--accent-primary);
   outline: 2px solid #ffffff;
@@ -325,6 +332,11 @@ body:not(.dark-theme) .VPSwitch {
 /* Light theme only - better contrast */
 body:not(.dark-theme) .VPSwitch .check {
   background: #0066cc;
+}
+
+/* Override light theme check when dark-theme-loading is on html */
+html.dark-theme-loading body:not(.dark-theme) .VPSwitch .check {
+  background: #5fd6ff;
 }
 .VPSwitch .icon {
   width: 20px;
