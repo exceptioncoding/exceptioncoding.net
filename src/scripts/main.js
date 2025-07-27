@@ -267,6 +267,7 @@ function setThemeSwitch(theme) {
     themeToggle.setAttribute("title", "Switch to dark theme");
   }
 }
+// Initialize theme switch based on current state
 setThemeSwitch(currentTheme);
 themeToggle.addEventListener("click", () => {
   const isDark = document.body.classList.toggle("dark-theme");

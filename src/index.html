@@ -39,8 +39,18 @@
     <link rel="stylesheet" href="styles/main.css" />
     <!-- Iconify CDN for SVG icons -->
     <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    
+    <!-- Theme loader - runs immediately to prevent flash -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark-theme');
+        }
+      })();
+    </script>
   </head>
-  <body>
+  <body class="dark-theme">
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
 
