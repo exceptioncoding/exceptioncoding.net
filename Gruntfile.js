@@ -48,6 +48,14 @@ module.exports = function(grunt) {
           src: ['*.png'],
           dest: 'dist/images/favicons/'
         }]
+      },
+      githubData: {
+        files: [{
+          expand: true,
+          cwd: 'data/',
+          src: ['github-data.json'],
+          dest: 'dist/data/'
+        }]
       }
     },
 
@@ -121,30 +129,70 @@ module.exports = function(grunt) {
           dest: 'dist/'
         }]
       }
-    },
-
-    // Minify JSON files including GitHub data
-    jsonmin: {
-      manifest: {
-        options: {
-          stripWhitespace: true
-        },
-        files: [{
-          expand: true,
-          cwd: 'dist/',
-          src: ['manifest.json'],
-          dest: 'dist/'
-        }]
-      },
-      githubData: {
-        options: {
-          stripWhitespace: true
-        },
-        files: {
-          'dist/data/github-data.json': 'data/github-data.json'
-        }
-      }
     }
+  });
+
+  // Custom task for JSON minification
+  grunt.registerTask('minify-json', 'Minify JSON files', function() {
+    const done = this.async();
+    const spawn = require('child_process').spawn;
+    
+    const child = spawn('node', ['bin/minify-json.js'], {
+      stdio: 'inherit',
+      cwd: process.cwd()
+    });
+    
+    child.on('close', function(code) {
+      if (code === 0) {
+        grunt.log.ok('JSON minification completed successfully');
+        done();
+      } else {
+        grunt.fail.warn('JSON minification failed');
+        done(false);
+      }
+    });
+  });
+
+  // Custom task for image optimization
+  grunt.registerTask('optimize-images', 'Optimize images with Sharp', function() {
+    const done = this.async();
+    const spawn = require('child_process').spawn;
+    
+    const child = spawn('node', ['bin/optimize-images.js'], {
+      stdio: 'inherit',
+      cwd: process.cwd()
+    });
+    
+    child.on('close', function(code) {
+      if (code === 0) {
+        grunt.log.ok('Image optimization completed successfully');
+        done();
+      } else {
+        grunt.fail.warn('Image optimization failed');
+        done(false);
+      }
+    });
+  });
+
+  // Custom task for HTML minification
+  grunt.registerTask('minify-html', 'Minify HTML files with html-minifier-terser', function() {
+    const done = this.async();
+    const spawn = require('child_process').spawn;
+    
+    const child = spawn('node', ['bin/minify-html.js'], {
+      stdio: 'inherit',
+      cwd: process.cwd()
+    });
+    
+    child.on('close', function(code) {
+      if (code === 0) {
+        grunt.log.ok('HTML minification completed successfully');
+        done();
+      } else {
+        grunt.fail.warn('HTML minification failed');
+        done(false);
+      }
+    });
   });
 
   // Load plugins
@@ -152,9 +200,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-jsonmin');
 
   // Register tasks
   grunt.registerTask('build', [
@@ -163,11 +208,12 @@ module.exports = function(grunt) {
     'copy:fonts', 
     'copy:manifest',
     'copy:favicons',
+    'copy:githubData',
     'cssmin',
     'uglify',
-    'imagemin',
-    'htmlmin',
-    'jsonmin'
+    'optimize-images',
+    'minify-html',
+    'minify-json'
   ]);
 
   grunt.registerTask('default', ['build']);
