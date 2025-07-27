@@ -254,8 +254,8 @@ async function fetchGitHubData() {
 
 // Theme toggle functionality with custom switch
 const themeToggle = document.getElementById("themeToggle");
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem("theme") || "light";
+// Check for saved theme preference or default to dark mode
+const currentTheme = localStorage.getItem("theme") || "dark";
 function setThemeSwitch(theme) {
   if (theme === "dark") {
     document.body.classList.add("dark-theme");
